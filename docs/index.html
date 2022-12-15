@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Cors Demo</title>
+    <script type="javascript">
+        function queryTodos() {
+            fetch('http://localhost:8080/todo')
+                .then(r => r.json())
+                .then(result => console.log(result));
+        }
+    </script>
 </head>
 <body>
 <h1>Cors demo</h1>
+<button onclick="queryTodos()">Query TODOs</button>
 </body>
 </html>
