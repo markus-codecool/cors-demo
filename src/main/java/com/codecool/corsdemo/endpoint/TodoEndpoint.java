@@ -1,18 +1,22 @@
 package com.codecool.corsdemo.endpoint;
 
 import com.codecool.corsdemo.entity.TodoEntryDto;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("todo")
+@RestController
+@RequestMapping("todo")
+@CrossOrigin(origins = {"http://localhost:63343", "https://markus-codecool.github.io"})
 public class TodoEndpoint {
-    @GetMapping
+    @GetMapping("")
+    @ResponseBody
     public List<TodoEntryDto> getCurrentTodos() {
-        return List.of(
-                new TodoEntryDto().title("Help Marc").description("Figure out how the f***ing CORS stuff works"),
-                new TodoEntryDto().title("Dea").description("Answer the remaining 47 questions")
+        List<TodoEntryDto> result = List.of(
+                new TodoEntryDto().setTitle("Help Marc").setDescription("Figure out how the f***ing CORS stuff works"),
+                new TodoEntryDto().setTitle("Dea").setDescription("Answer the remaining 47 questions")
         );
+        System.out.println(result);
+        return result;
     }
 }

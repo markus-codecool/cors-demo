@@ -5,14 +5,22 @@
     <title>Cors Demo</title>
     <script type="text/javascript">
         function queryTodos() {
-            fetch('http://localhost:8080/todo')
+            fetch('http://localhost:8080/todo', {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
                 .then(r => r.json())
-                .then(result => console.log(result));
+                .then(result => {
+                    console.log(result);
+                    document.getElementById('response').innerHTML = JSON.stringify(result, null, 2)
+                });
         }
     </script>
 </head>
 <body>
 <h1>Cors demo</h1>
 <button onclick="queryTodos()">Query TODOs</button>
+<pre id="response"></pre>
 </body>
 </html>
