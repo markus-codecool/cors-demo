@@ -7,7 +7,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("todo")
-@CrossOrigin(origins = {"http://localhost:63343", "https://markus-codecool.github.io"})
 public class TodoEndpoint {
     @GetMapping("")
     @ResponseBody
